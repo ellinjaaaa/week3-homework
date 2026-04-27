@@ -62,7 +62,18 @@ print(f"Students ar augstāko vērtējumu ir {student} ar atzīmi {mark}.")
 
 #C daļa
 
+'''Izveidoti divi cikli, kas atrod vērtējumus, kas lielāki par vai vienādi ar 80. Tad izvada dotos skolēnus, visiem
+klāt pierakstot kārtas numuru. 1.ciklā izmantots nosacījumos prasītais enumerate, taču ar to radās neliela problēma - 
+tas skolēniem deva kārtas numuru, nevis pēc nosacījuma, kurš pēc kārtas viņš ir saņēmis šo vērtējumu >=80, bet gan kopumā,
+kurš pēc kārtas viņš ir sarakstā. To ļoti labi var redzēt izvadē - ar enumerate Kristīne ir 4.vispārīgajā sarakstā, bet 
+pievienojot mainīgo a, pielīdzinot 1 (skolēnu skaitīšana sākas ar 1), pēc veiksmīga if statement a palielinās par 1,
+tad Kristīne ir 2. (kas izskatās pareizāk un atbilstošāk esošajam rezultātam mājasdarba paraugā).'''
+
 list=[{"name":"Anna","grade":85},{"name":"Jānis","grade":72},{"name":"Līga","grade":76},{"name":"Kristīne","grade":86},{"name":"Jāzeps","grade":67},{"name":"Arvis","grade":56}]
+
+for a,b in enumerate(list):
+    if b["grade"] >=80:
+        print(f"{a+1}.{b["name"]} - {b["grade"]}")
 
 a=1
 for b in list:
