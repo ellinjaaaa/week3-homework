@@ -9,7 +9,13 @@ count=0
 for a in (numbers):
     tog+=a
     count+=1
-    
+
 mid=tog/count
 print("Saraksta summa: ", tog)
 print("Vidējā vērtība: ", mid)
+
+for b in (numbers):
+    if b%2==0:
+        print(b)
+    else:
+        continue
