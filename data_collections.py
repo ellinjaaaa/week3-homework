@@ -43,4 +43,7 @@ students={"Anna":85,
 students["Arvis"]=56   #Pievienots jauns students, uzrakstot jaunu atslēgu un piešķirot vērtību.
 students["Līga"]=76   #Mainīta esošā atzīme, pie atslēgas pierakstot citu vērtību.
 
-print(students)  
+'''Ar for ciklu izvadīts katra skolēna vārds un atzīme.'''
+for name, grade in students.items():
+    print(f"{name}: {grade}")
+
