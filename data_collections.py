@@ -25,3 +25,8 @@ for b in (numbers):   #Cikls - tik reižu, cik sarakstā elementu.
         even_n.append(b)  #Ja skaitlis ir pāra, tad tiek PIEVIENOTS tukšajam sarakstam.
 
 print("Jaunais saraksts ar pāra skaitļiem:", even_n)
+
+'''Šķelšana - noteiktas daļas saraksta tiek atlasītas, atdalītas, idzēstas.'''
+print(numbers[:3]) #Izdrukā pirmos 3 elementus - no 0. līdz 2.indeksam; 3. netiek iekļauts, tā kā end vērtība - neiekļaujoša.
+print(numbers[-2:])   #Izdrukā pēdējos 2 elementus - no 2.elementa no beigām līdz saraksta beigām; -2 neiekļauts indekss.
+print(numbers[::2]) #Izdrukā katru 2.elementu.
