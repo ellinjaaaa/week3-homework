@@ -26,7 +26,21 @@ for b in (numbers):   #Cikls - tik reižu, cik sarakstā elementu.
 
 print("Jaunais saraksts ar pāra skaitļiem:", even_n)
 
-'''Šķelšana - noteiktas daļas saraksta tiek atlasītas, atdalītas, idzēstas.'''
+'''Šķelšana - noteiktas daļas saraksta tiek atlasītas, atdalītas.'''
 print(numbers[:3]) #Izdrukā pirmos 3 elementus - no 0. līdz 2.indeksam; 3. netiek iekļauts, tā kā end vērtība - neiekļaujoša.
 print(numbers[-2:])   #Izdrukā pēdējos 2 elementus - no 2.elementa no beigām līdz saraksta beigām; -2 neiekļauts indekss.
 print(numbers[::2]) #Izdrukā katru 2.elementu.
+
+#B daļa
+'''Izveidota vārdnīca, kur vārdam piešķirta atzīme. Turpmāk notiek jauna studenta pievienošana, kā arī jau esoša
+studenta atzīmes maiņa.'''
+students={"Anna":85,
+          "Jānis":72,
+          "Līga":95,
+          "Kristīne":43,
+          "Jāzeps":67}
+
+students["Arvis"]=56   #Pievienots jauns students, uzrakstot jaunu atslēgu un piešķirot vērtību.
+students["Līga"]=76   #Mainīta esošā atzīme, pie atslēgas pierakstot citu vērtību.
+
+print(students)  
