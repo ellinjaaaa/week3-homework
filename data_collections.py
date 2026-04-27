@@ -5,8 +5,11 @@ numbers.append(12)
 numbers.pop(5)
 
 tog=0
+count=0
 for a in (numbers):
     tog+=a
-    mid=tog/9
+    count+=1
+    
+mid=tog/count
 print("Saraksta summa: ", tog)
 print("Vidējā vērtība: ", mid)
