@@ -40,10 +40,22 @@ students={"Anna":85,
           "Kristīne":43,
           "Jāzeps":67}
 
-students["Arvis"]=56   #Pievienots jauns students, uzrakstot jaunu atslēgu un piešķirot vērtību.
-students["Līga"]=76   #Mainīta esošā atzīme, pie atslēgas pierakstot citu vērtību.
+students["Arvis"]=56 #Pievienots jauns students, uzrakstot jaunu atslēgu un piešķirot vērtību.
+students["Līga"]=76 #Mainīta esošā atzīme, pie atslēgas pierakstot citu vērtību.
 
 '''Ar for ciklu izvadīts katra skolēna vārds un atzīme.'''
 for name, grade in students.items():
     print(f"{name}: {grade}")
 
+'''Ar for cikla palīdzību tiek atrasts augstākais vērtējums. Pašā sākumā atzīme tiek pielīdzināta 0, tā kā tā ir pati zemākā
+atzīme. For ciklā noteikti iterācijas mainīgie - name un grade. Ejot caur vārdnīcu, ja skolēna grade ir lielāks par iepriekš
+noteikto mark (0), tad tas pārtop par turpmāk izmantojamo mark. Arī studenta vārds pamainās uz labāko rezultātu. Šādi katru
+reizi tiek veikta pārbaude katram iterācijas mainīgajam - vai katrs nākamais grade ir lielāks par iepriekš noteikto augstāko
+mark.Arī studenta vārds pamainās atbilstoši labākajam rezultātam.'''
+mark=0
+for name, grade in students.items():
+    if grade>mark:
+        mark=grade
+        student=name
+
+print(f"Students ar augstāko vērtējumu ir {student} ar atzīmi {mark}.")
