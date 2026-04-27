@@ -37,7 +37,7 @@ studenta atzīmes maiņa.'''
 students={"Anna":85,
           "Jānis":72,
           "Līga":95,
-          "Kristīne":43,
+          "Kristīne":86,
           "Jāzeps":67}
 
 students["Arvis"]=56 #Pievienots jauns students, uzrakstot jaunu atslēgu un piešķirot vērtību.
@@ -59,3 +59,13 @@ for name, grade in students.items():
         student=name
 
 print(f"Students ar augstāko vērtējumu ir {student} ar atzīmi {mark}.")
+
+#C daļa
+
+list=[{"name":"Anna","grade":85},{"name":"Jānis","grade":72},{"name":"Līga","grade":76},{"name":"Kristīne","grade":86},{"name":"Jāzeps","grade":67},{"name":"Arvis","grade":56}]
+
+a=1
+for b in list:
+    if b["grade"] >=80:
+        print(f"{a}. {b["name"]} - {b["grade"]}")
+        a+=1
