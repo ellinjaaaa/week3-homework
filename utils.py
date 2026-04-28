@@ -68,3 +68,43 @@ izvade: 1 - int paliekot par str, viens vārds.
 print(count_words("Be who you are and say what you feel, because those who mind don't matter, and those who matter don't mind."))
 izvade: 21
 '''
+
+def clamp(num, low=0, high=50):
+    '''
+    Ierobežo skaitli noteiktajā intervālā - vai nu pēc noklusējuma vērtībām, vai nu pēc sevis ntoeiktā. Ja pārsniedz
+    intervālu zemākajā vai augstākajā galā, tad tas gals tiek atgriezts. Ja ir intervāla vidū, skaitlis tiek atgriezts.
+
+    Args:
+        num: skaitlis, kurš tiek ierobežots intervālā.
+        low: zemākā vērtība, kas varētu būt skaitlim. Ja skaitlis zemāks, tad zemākā vērtība pēc noklusējuma 0 vai arī
+        lietotāja noteiktā tiks atgriezta.
+        high: augstākā vērtība, kas varētu būt skaitlim. Ja skaitlis augstāks, tad augstākā vērtība pēc noklusējuma 50 vai arī
+        lietotāja noteiktā tiks atgriezta.
+
+    Atgriež:
+        intervālā esošu skaitli vai ar kādu intervāla galu (ierobežojumu).
+    '''
+    try:
+        n=float(num) #Ja tiek ievadīti decimālskaitļi, programma spēs tos apstrādāt.
+        l=float(low)
+        h=float(high)
+        return max(l, min(n, h))
+    except (ValueError, TypeError):
+        return low #Lai necrashotu, atgriež mazāko noklusējuma vērtību.
+
+'''
+print(clamp(-5))
+izvade: 0.0 - vērtība tiek ierobežota ar mazāko noklusējuma vērtību.
+
+print(clamp(5.3))
+izvade: 5.3 - vērtība ietilpst intervālā un programma spēj apstrādāt decimālskaitli.
+
+print(clamp(97))
+izvade: 50.0 - vērtība tiek ierobežota ar lielāko noklusējuma vērtību.
+
+print(clamp("Mimi"))
+izvade: 0 - lai necrashotu Erroram programma piešķir mazāko noklusējuma vērtību.
+
+print(clamp(30,10,20))
+izvade: 20.0 - programma piešķir lietotāja noteikto augstāko vērtību, tā kā num ri ārpus noteiktā intervāla.
+'''
