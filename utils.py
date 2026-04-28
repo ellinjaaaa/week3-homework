@@ -39,3 +39,32 @@ izvade: Be who you are and say what you feel, because thos... - max_len tika nor
 
 print(truncate("Be who you are."))
 izvade: Be who you are. - max_len netika norādīts, taču arī noklusējuma vērtība netika pārsniegta.'''
+
+def count_words(text=None):   #Lai programma necrashotu, textam ir noklusējuma vērtība.
+    '''
+    Funkcija nodrošina vārdu saskaitīšanu.
+
+    Args:
+        text: tekstam tiks saskaitīts vārdu skaits. Ja netiek nekas vispār uzrakstīts, tad noklusējuma vērtība None iedarbojas,
+        kurai, tāpāt kā tukšam tekstam ("")", piešķirta 0. Tālāk jau gan pārveido par string, lai saskaitītu vārdu skaitu.
+
+    Atgriež:
+        vārdu skaitu.
+    '''
+    if text is None or text=="":
+        return 0   #Lai neuztvertu pēc string pārveidojuma kā 1 vārdu, tiek pirms tam piešķirta 0.
+    else:
+        text_str=str(text)
+        count=len(text_str.split())
+        return count
+
+'''
+print(count_words())
+izvade: 0 - piešķirta noklusējuma vērtība None, kura, savukārt, atgriež 0.
+
+print(count_words(13))
+izvade: 1 - int paliekot par str, viens vārds.
+
+print(count_words("Be who you are and say what you feel, because those who mind don't matter, and those who matter don't mind."))
+izvade: 21
+'''
