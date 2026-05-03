@@ -142,9 +142,31 @@ def is_prime(num):
 
 def factorial(n):
     '''
+    Funkcija aprēķina skaitļa faktoriālu.
 
+    Args:
+        n: skaitlis, kuram rēķina faktoriālu.
+
+    Atgriež:
+        Ja skaitlis decimālskaitlis, atgriež None, tā kā tiem nav faktoriāla. Ja skaitlis mazāks par 0, atgriež None - jo
+        negatīviem skaitļiem nav faktoriāla. Ja skaitlis ir 0, faktoriāls ir 1. Ja lielāks par 0, tiek aprēķināts faktoriāls.
+
+    Piemēri:
+    print(factorial(0))
+    izvade: 1
+
+    print(factorial(-2))
+    izvade: None
+
+    print(factorial(6))
+    izvade: 720
+
+    print(factorial(3.5))
+    izvade: None
     '''
-    if n<0:
+    if not isinstance(n, int): #Decimālskaitlim nevar būt faktoriāls.
+        return None
+    elif n<0:
         return None
     elif n==0:
         return 1
@@ -154,6 +176,3 @@ def factorial(n):
             fac*=a
         return fac
         
-print(factorial(0))
-print(factorial(-2))
-print(factorial(6))
