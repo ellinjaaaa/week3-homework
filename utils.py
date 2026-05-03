@@ -140,3 +140,20 @@ def is_prime(num):
             return False
     return True
 
+def factorial(n):
+    '''
+
+    '''
+    if n<0:
+        return None
+    elif n==0:
+        return 1
+    else:
+        fac=1
+        for a in range(1,n+1):
+            fac*=a
+        return fac
+        
+print(factorial(0))
+print(factorial(-2))
+print(factorial(6))
