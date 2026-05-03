@@ -5,13 +5,14 @@ def capitalize(text):
         text(str): str, kas tiks modificēts.
 
     Atgriež:
-        tekstu ar lielo sākumburtu.'''
+        tekstu ar lielo sākumburtu.
+        
+    Piemērs:
+    print(capitalize("hello")) izvade: Hello
+    '''
     if not text:
         return text #ja nav str vai tukšs str, atgriezīs tekstu tādu, kāds ir.
     return text[0].upper() + text[1:]
-
-#Piemērs:
-#print(capitalize("hello")) izvade: Hello
 
 def truncate(text, max_len=20):
     '''
@@ -25,20 +26,20 @@ def truncate(text, max_len=20):
 
     Atgriež:
         Tādu pašu tekstu, ja nepārsniedz rakstzīmju skaitu, vai arī ierobežotu tekstu ar daudzpunkti.
+
+    Piemēri:
+    print(truncate("Be who you are and say what you feel, because those who mind don't matter, and those who matter don't mind."))
+    izvade: Be who you are and sa... - max_len netika norādīts, tādēļ tika ierobežots pēc 20.rakstzīmes (noklusējuma vērtība).
+
+    print(truncate("Be who you are and say what you feel, because those who mind don't matter, and those who matter don't mind.", 50))
+    izvade: Be who you are and say what you feel, because thos... - max_len tika norādīts, tādēļ tika ierobežots pēc 50.rakstzīmes.
+
+    print(truncate("Be who you are."))
+    izvade: Be who you are. - max_len netika norādīts, taču arī noklusējuma vērtība netika pārsniegta.
     '''
     if len(text) > max_len:
         return text[:max_len] + "..."
     return text
-
-'''Piemēri
-print(truncate("Be who you are and say what you feel, because those who mind don't matter, and those who matter don't mind."))
-izvade: Be who you are and sa... - max_len netika norādīts, tādēļ tika ierobežots pēc 20.rakstzīmes (noklusējuma vērtība).
-
-print(truncate("Be who you are and say what you feel, because those who mind don't matter, and those who matter don't mind.", 50))
-izvade: Be who you are and say what you feel, because thos... - max_len tika norādīts, tādēļ tika ierobežots pēc 50.rakstzīmes.
-
-print(truncate("Be who you are."))
-izvade: Be who you are. - max_len netika norādīts, taču arī noklusējuma vērtība netika pārsniegta.'''
 
 def count_words(text=None):   #Lai programma necrashotu, textam ir noklusējuma vērtība.
     '''
@@ -50,6 +51,16 @@ def count_words(text=None):   #Lai programma necrashotu, textam ir noklusējuma 
 
     Atgriež:
         vārdu skaitu.
+
+    Piemēri:
+    print(count_words())
+    izvade: 0 - piešķirta noklusējuma vērtība None, kura, savukārt, atgriež 0.
+
+    print(count_words(13))
+    izvade: 1 - int paliekot par str, viens vārds.
+
+    print(count_words("Be who you are and say what you feel, because those who mind don't matter, and those who matter don't mind."))
+    izvade: 21
     '''
     if text is None or text=="":
         return 0   #Lai neuztvertu pēc string pārveidojuma kā 1 vārdu, tiek pirms tam piešķirta 0.
@@ -57,17 +68,6 @@ def count_words(text=None):   #Lai programma necrashotu, textam ir noklusējuma 
         text_str=str(text)
         count=len(text_str.split())
         return count
-
-'''
-print(count_words())
-izvade: 0 - piešķirta noklusējuma vērtība None, kura, savukārt, atgriež 0.
-
-print(count_words(13))
-izvade: 1 - int paliekot par str, viens vārds.
-
-print(count_words("Be who you are and say what you feel, because those who mind don't matter, and those who matter don't mind."))
-izvade: 21
-'''
 
 def clamp(num, low=0, high=50):
     '''
@@ -83,6 +83,22 @@ def clamp(num, low=0, high=50):
 
     Atgriež:
         intervālā esošu skaitli vai ar kādu intervāla galu (ierobežojumu).
+
+    Piemēri:
+    print(clamp(-5))
+    izvade: 0.0 - vērtība tiek ierobežota ar mazāko noklusējuma vērtību.
+
+    print(clamp(5.3))
+    izvade: 5.3 - vērtība ietilpst intervālā un programma spēj apstrādāt decimālskaitli.
+
+    print(clamp(97))
+    izvade: 50.0 - vērtība tiek ierobežota ar lielāko noklusējuma vērtību.
+
+    print(clamp("Mimi"))
+    izvade: 0 - lai necrashotu Erroram programma piešķir mazāko noklusējuma vērtību.
+
+    print(clamp(30,10,20))
+    izvade: 20.0 - programma piešķir lietotāja noteikto augstāko vērtību, tā kā num ri ārpus noteiktā intervāla.
     '''
     try:
         n=float(num) #Ja tiek ievadīti decimālskaitļi, programma spēs tos apstrādāt.
@@ -92,19 +108,35 @@ def clamp(num, low=0, high=50):
     except (ValueError, TypeError):
         return low #Lai necrashotu, atgriež mazāko noklusējuma vērtību.
 
-'''
-print(clamp(-5))
-izvade: 0.0 - vērtība tiek ierobežota ar mazāko noklusējuma vērtību.
+def is_prime(num):
+    '''
+    Nosaka ar bool vērtībām (True/False). vai skaitlis ir pirmskaitlis. Ja skatlis mazāks par 2 - uzreiz False, tā kā, tikai
+    sākot ar 2, sākas pirmskaitļi. Tad pārbauda, vai dalās ar skaitli intervālā no 2 līdz pat kvadrātsaknei no mūsu 
+    skaitļa (+1, lai range ieskaitītu arī kvadrātsakni) - pietiek ar kvadrātsakni, tā kā dalītāji bieži vien sadalās pāros,
+    kur viens dalītājs ir mazāks par kvadrātsakni no mūsu skaitļa, savukārt, otrs - lielāks. Piem., skaitlis 36 - kvadrātsakne
+    no tā ir 6, dalītāju pāri (1,36), (2,18), (3, 12), (4,9), (6,6) -, katram pārim ir dalītājs mazāks par skaitļa kvadrātsakni.
+    Ja šis izpildās, tad False. Ja nekas no šī neizpildās - True, skaitlis ir pirmskaitlis.
 
-print(clamp(5.3))
-izvade: 5.3 - vērtība ietilpst intervālā un programma spēj apstrādāt decimālskaitli.
+    Args:
+        num: skaitlis, kuram tiek pārbaudīts, vai tas ir pirmskaitlis.
 
-print(clamp(97))
-izvade: 50.0 - vērtība tiek ierobežota ar lielāko noklusējuma vērtību.
+    Atgriež:
+        bool vērtību: False, ja skaitlis nav pirmskaitlis, True - ja tas ir.
 
-print(clamp("Mimi"))
-izvade: 0 - lai necrashotu Erroram programma piešķir mazāko noklusējuma vērtību.
+    Piemēri:
+    print(is_prime(9))
+    izvade: False
 
-print(clamp(30,10,20))
-izvade: 20.0 - programma piešķir lietotāja noteikto augstāko vērtību, tā kā num ri ārpus noteiktā intervāla.
-'''
+    print(is_prime(-2))
+    izvade: False
+
+    print(is_prime(17))
+    izvade: True
+    '''
+    if num<2:
+        return False
+    for p in range (2, int(num**0.5)+1):
+        if num % p==0:
+            return False
+    return True
+
