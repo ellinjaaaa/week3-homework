@@ -8,7 +8,7 @@ def is_email(text):
     Atgriež:
         bool: ja e-pastā ir @ un aiz tā ., tad True.
 
-    Piemērs:
+    Piemēri:
     print(is_email("anna@inbox.lv")) #True
     print(is_email("anna@inb")) #False
     '''
@@ -41,8 +41,26 @@ def is_phone_number(text):
     number=number.replace(" ","") #noņem visas atstarpes - tās, kuras numura vidū
     return number.isdigit() and len(number) == 8 #.isdigit() nodrošina, ka tikai cipari; len() nodrošina, ka 8 cipari numurā (LV)
 
-#def is_valid_age(age): # 0–150, vesels skaitlis
+def is_valid_age(age):
+    '''
+    Funkcija validē vecumu, kam jābūt veselam skaitlim, no 0 līdz 150.
 
+    Args:
+        age: validējamais skaitlis.
+
+    Atgriež:
+        bool: True, ja skaitlis ir no int klases (vesels skaitlis) un intervālā no 0 līdz 150 (abus galus ieskaitot).
+
+    Piemēri:
+    print(is_valid_age(150)) #True
+    print(is_valid_age("abe")) #False
+    print(is_valid_age(-1)) #False
+    '''
+    if not isinstance(age, int):
+        return False
+    if not 0<=age<=150:
+        return False
+    return True
 
 #def is_strong_password(text): # Vismaz 8 simboli, satur burtus UN ciparus
 
@@ -62,3 +80,9 @@ if __name__ == "__main__":
     print(is_phone_number("")) #False
     print(is_phone_number("+27755667788")) #False
     print(is_phone_number("+371 22334455")) #True
+    print(is_valid_age(-1)) #False
+    print(is_valid_age(0)) #True
+    print(is_valid_age(58)) #True
+    print(is_valid_age(150)) #True
+    print(is_valid_age(203)) #False
+    print(is_valid_age("abe")) #False
