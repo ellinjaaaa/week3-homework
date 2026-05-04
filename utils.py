@@ -241,3 +241,13 @@ def average(*numbers):
         return None
     else:
         return tot/len(numbers)
+    
+if __name__ == "__main__":
+    print(capitalize("hello"))
+    print(truncate("Be who you are and say what you feel, because those who mind don't matter, and those who matter don't mind.", 50))
+    print(count_words(13))
+    print(clamp(-5))
+    print(is_prime(17))
+    print(factorial(0))
+    print(total(9, 3.4, 15.7654))
+    print(average(9,4,5,6,7))
