@@ -10,3 +10,6 @@ def check_guess(secret, guess):
         return "Tevis izvēlētais skaitlis ir par mazu!"
     else:
         return "Apsveicu! Tu uzminēji skaitli!"
+    
+if __name__ == "__main__":
+    print(generate_number())
