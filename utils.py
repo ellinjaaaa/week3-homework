@@ -210,3 +210,34 @@ def total(*numbers):
             tog+=c
     return tog
     
+def average(*numbers):
+    '''
+    Funkcija aprēķina vidējo aritmētisko, izmantojot iepriekš definēto funkciju, kas aprēķina
+    skaitļu summu, kā arī izmantojot len().
+
+    Args:
+        *numbers: skaitļi, kas, neatkarīgi no skaitļu skaita, tiks sasummēti, un tad izdalīti
+        ar to skaitu.
+
+    Atgriež:
+        None, ja tuksš saraksts vai nav int/float klases vērtības (ja bool, tad arī None). Citādāk:
+        skaitļi tiek sasummēti ar iepriekšējās funkcijas total(*numbers) palīdzību, tad izdalīti ar
+        to skaitu (len(numbers)).
+
+    Piemēri:
+    print(average())
+    izvade: None
+
+    print(average(True, "lin", 4))
+    izvade: None
+
+    print(average(9,4,5,6,7))
+    izvade: 6.2
+    '''
+    tot=total(*numbers)
+    if len(numbers)==0:
+        return None
+    elif tot is None:
+        return None
+    else:
+        return tot/len(numbers)
