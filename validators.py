@@ -83,8 +83,32 @@ def is_strong_password(text):
     num=any(a.isdigit() for a in text) #any pārbauda, vai vismaz kāds no characters ir cipars (.isdigit()); for cikls iekļauts kompakti iekšā.
     return let and num
 
-#def is_valid_date(text): # YYYY-MM-DD formāts (pamata pārbaude)
+def is_valid_date(text):
+    ''''
+    Funkcija validē datuma formātu. Datumam jābū 10 rakstzīmes garam, pēc indeksa 4. un 7. elementam jābūt "—", savukārt, gadam, mēnesim un dienai
+    jabūt cipariem.
 
+    Args:
+        text: validējamais datums.
+
+    Atgriež:
+        bool: True, ja datums ir tieši 10 rakstzīmes garš. Pēc indeksa 4. un 7. elements ir "-". Gadam (0. līdz 4.indekss (neieskaitot)), mēnesim 
+        (5. līdz 7.indekss (neieskaitot)) un dienai (8. indekss līdz pat beigām) jābūt VISIEM tikai cipariem. Citādāk - False.
+
+    Piemēri:
+    print(is_valid_date("2026-05-04")) #True
+    print(is_valid_date("ABBA-RA-FA")) #False
+    '''
+    if len(text)!=10: 
+        return False
+    if text[4]!="-" or text[7]!="-":
+        return False
+    year=text[:4]
+    month=text[5:7]
+    day=text[8:]
+    if not (year.isdigit() and month.isdigit() and day.isdigit()):
+        return False
+    return True
 
 if __name__ == "__main__":
     print(is_email("anna@inbox.lv")) #True
@@ -109,3 +133,8 @@ if __name__ == "__main__":
     print(is_strong_password("Halleluyah123")) #True
     print(is_strong_password("12345678")) #False
     print(is_strong_password("a1b2c3d4")) #True
+    print(is_valid_date("2005-03-06")) #True
+    print(is_valid_date("2026-05-04")) #True
+    print(is_valid_date("ABBA-RA-FA")) #False
+    print(is_valid_date("05-AL-05")) #False
+    print(is_valid_date("06-03-2005")) #False
