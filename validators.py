@@ -62,8 +62,26 @@ def is_valid_age(age):
         return False
     return True
 
-#def is_strong_password(text): # Vismaz 8 simboli, satur burtus UN ciparus
+def is_strong_password(text):
+    '''
+    Funkcija validē paroli, kurai jābūt vismaz 8 rakstzīmes garai (len>8), jāsatur vismaz viens burts (.isalpha()) 
+    un vismaz viens cipars (.isdigit()).
 
+    Args:
+        text: validējamā parole.
+
+    Atgriež:
+        bool: True, ja vismaz 8 rakstzīmes, vismaz viens burts un vismaz viens cipars. Citādāk - False.
+
+    Piemēri:
+    print(is_strong_password("Halleluyah")) #False
+    print(is_strong_password("Halleluyah123")) #True
+    '''
+    if len(text)<8:
+        return False
+    let=any(a.isalpha() for a in text) #any pārbauda, vai vismaz kāds no characters ir burts (.isalpha()); for cikls iekļauts kompakti iekšā.
+    num=any(a.isdigit() for a in text) #any pārbauda, vai vismaz kāds no characters ir cipars (.isdigit()); for cikls iekļauts kompakti iekšā.
+    return let and num
 
 #def is_valid_date(text): # YYYY-MM-DD formāts (pamata pārbaude)
 
@@ -86,3 +104,8 @@ if __name__ == "__main__":
     print(is_valid_age(150)) #True
     print(is_valid_age(203)) #False
     print(is_valid_age("abe")) #False
+    print(is_strong_password("")) #False
+    print(is_strong_password("Halleluyah")) #False
+    print(is_strong_password("Halleluyah123")) #True
+    print(is_strong_password("12345678")) #False
+    print(is_strong_password("a1b2c3d4")) #True
