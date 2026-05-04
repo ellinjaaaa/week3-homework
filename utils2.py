@@ -5,11 +5,11 @@ def generate_number():
 
 def check_guess(secret, guess):
     if guess>secret:
-        return "Tevis izvēlētais skaitlis ir par lielu!"
+        return "high"
     elif guess<secret:
-        return "Tevis izvēlētais skaitlis ir par mazu!"
+        return "low"
     else:
-        return "Apsveicu! Tu uzminēji skaitli!"
+        return "correct"
     
 if __name__ == "__main__":
     print(generate_number())
