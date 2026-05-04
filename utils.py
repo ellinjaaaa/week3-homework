@@ -176,3 +176,19 @@ def factorial(n):
             fac*=a
         return fac
         
+def total(*numbers):
+    '''
+    
+    '''
+    for c in (numbers):
+        if not isinstance (c, (int, float)):
+            return None
+    else:
+        tog=0
+        for b in (numbers):
+            tog+=b
+        return tog
+    
+print(total("abe"))
+print(total(9))
+print(total(9,5,4,6,4,7))
