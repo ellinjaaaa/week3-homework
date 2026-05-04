@@ -178,17 +178,35 @@ def factorial(n):
         
 def total(*numbers):
     '''
-    
+    Funkcija sasummē skaitļus kopā.
+
+    Args:
+        *numbers: skaitļi; neatkarīgi no skaitļu skaita, tie visi tiks sasummēti.
+
+    Atgriež:
+        Ja skaitļi nav int vai float klasē, tiks atgriezts None. Bool vērtības arī netiek 
+        ieskaitītatas, jo tās ir int apakšklase, None=0, True=1. Lai tie netiktu pieskaitīti,
+        atgriež vienkārši None. Ja skaitļiem iepriekš noteiktie nosacījumi ievēroti - tie ir
+        int vai float klasē -, tiek sasummēti visi kopā.
+
+    Piemēri:
+    print(total("abe"))
+    izvade: None
+
+    print(total(True, 2))
+    izvade: None
+
+    print(total(9, 3.4, 15.7654))
+    izvade: 28.165399999999998
+
+    print(total(9,5,4,6,4,7))
+    izvade: 35
     '''
+    tog=0
     for c in (numbers):
-        if not isinstance (c, (int, float)):
+        if not isinstance (c, (int, float)) or isinstance(c, bool):
             return None
-    else:
-        tog=0
-        for b in (numbers):
-            tog+=b
-        return tog
+        else:
+            tog+=c
+    return tog
     
-print(total("abe"))
-print(total(9))
-print(total(9,5,4,6,4,7))
